@@ -1,0 +1,31 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#hbox-top {
+	-fx-alignment: center;
+	-fx-min-height: 100;
+	-fx-background-color: red;
+	
+}
+
+#hbox-bottom {
+	-fx-alignment: center;
+	-fx-min-height: 100;
+	-fx-background-color: blue;
+}
+
+#hbox-center {
+	-fx-alignment: center;
+
+}
+
+#vbox-left {
+	-fx-alignment: center;
+	-fx-min-width: 100;
+	-fx-background-color: green;
+}
+
+#vbox-right {
+	-fx-alignment: center;
+	-fx-min-width: 100;
+	-fx-background-color: yellow;
+}
+
