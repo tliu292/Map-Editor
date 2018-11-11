@@ -2,6 +2,7 @@
 #hbox-top {
 	-fx-alignment: center;
 	-fx-min-height: 100;
+	-fx-max-height: 100;
 	-fx-background-color: red;
 	
 }
@@ -9,22 +10,27 @@
 #hbox-bottom {
 	-fx-alignment: center;
 	-fx-min-height: 100;
+	-fx-max-height: 100;
 	-fx-background-color: blue;
 }
 
 #gridpane-center {
 	-fx-alignment: center;
+	-fx-min-height: 400;
+	-fx-max-height: 600;
 }
 
 #vbox-left {
 	-fx-alignment: center;
 	-fx-min-width: 100;
+	-fx-max-width: 100;
 	-fx-background-color: green;
 }
 
 #vbox-right {
 	-fx-alignment: center;
 	-fx-min-width: 100;
+	-fx-max-width: 100;
 	-fx-background-color: yellow;
 }
 

@@ -6,4 +6,5 @@ public class Room extends Item{
         super(height, width, path);
     }
 
+    
 }

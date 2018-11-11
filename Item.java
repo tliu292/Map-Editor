@@ -2,12 +2,10 @@ package application;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.TransferMode;
 
 public class Item {
     protected static ImageView selectedImage;
+    protected static Item selectedItem;
     protected int height;
     protected int width;
     protected int positionX;
@@ -50,6 +48,7 @@ public class Item {
             if (selectedImage != null) {
                 selectedImage.setStyle("");
             }
+            selectedItem = this;
             selectedImage = iv;
             selectedImage.setStyle("-fx-effect: innershadow(gaussian, red, 3, 1.0, 0, 0);");
         });

@@ -1,11 +1,13 @@
 package application;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -20,6 +22,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 public class GUI {
     private static HBox bottom;
@@ -38,11 +43,10 @@ public class GUI {
         roomPath = setPath("src/application/ROOMS_IMAGE_PATH.txt");
         enemyPath = setPath("src/application/ENEMIES_IMAGE_PATH.txt");
         weaponPath = setPath("src/application/WEAPONS_IMAGE_PATH.txt");
-        
         root.setLeft(setupLeft("D"));
         root.setRight(setupRight());
         root.setBottom(setupBottom());
-        root.setCenter(setupCenter());
+        root.setCenter(setupCenter(root));
         root.setTop(setupTop(root));
 
         return root;
@@ -51,16 +55,21 @@ public class GUI {
     private static HBox setupBottom() {
         bottom = new HBox();
         bottom.setId("hbox-bottom");
+        bottom.setMinHeight(100);
+        bottom.setMaxHeight(100);
         Button zoomIn = new Button();
         zoomIn.setText("Zoom In");
         zoomIn.setOnAction(e -> {
             if (Item.selectedImage != null) {
                 double initHeight = Item.selectedImage.getImage().getHeight();
                 double initWidth = Item.selectedImage.getImage().getWidth();
-                if (Item.selectedImage.getFitHeight() == 0) {
+                if (Item.selectedImage.getFitHeight() == 0 
+                                && Item.selectedImage.getFitHeight() <= 400
+                                && Item.selectedImage.getFitWidth() <= 600) {
                     Item.selectedImage.setFitHeight(initHeight * 1.5);
                     Item.selectedImage.setFitWidth(initWidth * 1.5);
-                } else {
+                } else if (Item.selectedImage.getFitHeight() <= 400
+                                && Item.selectedImage.getFitWidth() <= 600) {
                     Item.selectedImage.setFitHeight(Item.selectedImage.getFitHeight() * 1.5);
                     Item.selectedImage.setFitWidth(Item.selectedImage.getFitWidth() * 1.5);
                 }
@@ -88,12 +97,12 @@ public class GUI {
         Button rotate = new Button();
         rotate.setText("Rotate");
         rotate.setOnAction(e -> {
-        	if (Item.selectedImage != null) {
-        		Item.selectedImage.setRotate(Item.selectedImage.getRotate() + 90);
-        		if (Item.selectedImage.getRotate() == 360) {
-        			Item.selectedImage.setRotate(0);
-        		}
-        	}
+            if (Item.selectedImage != null) {
+                Item.selectedImage.setRotate(Item.selectedImage.getRotate() + 90);
+                if (Item.selectedImage.getRotate() == 360) {
+                    Item.selectedImage.setRotate(0);
+                }
+            }
         });
         bottom.getChildren().add(rotate);
         
@@ -109,14 +118,23 @@ public class GUI {
         return top;
     }
 
-    private static GridPane setupCenter() {
+    private static GridPane setupCenter(BorderPane root) {
         center = new GridPane();
-        center.setPrefSize(2400, 3200);
         center.setId("gridpane-center");
         Image image = new Image("application/images/background.png",2400,3200,true,true);
         BackgroundImage myBI = new BackgroundImage(image,BackgroundRepeat.NO_REPEAT,
-        		BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
+                BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
         center.setBackground(new Background(myBI));
+        center.setOnMouseClicked(e -> {
+            if (Item.selectedItem instanceof Enemy) {
+                double x = e.getSceneX();
+                double y = e.getSceneY();
+                Circle point = new Circle(x, y, 3);
+                
+                //point.setTranslateX(x);
+                //point.setTranslateY(y);
+            }
+        });
         return center;
     }
 
