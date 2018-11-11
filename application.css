@@ -12,9 +12,8 @@
 	-fx-background-color: blue;
 }
 
-#hbox-center {
+#gridpane-center {
 	-fx-alignment: center;
-
 }
 
 #vbox-left {
@@ -28,4 +27,15 @@
 	-fx-min-width: 100;
 	-fx-background-color: yellow;
 }
+
+#button {
+	-fx-max-width: 30.0;
+	-fx-max-height: 20.0;
+}
+
+
+
+
+
+
 
