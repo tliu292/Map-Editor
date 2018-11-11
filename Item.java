@@ -8,9 +8,10 @@ public class Item {
     protected static Item selectedItem;
     protected int height;
     protected int width;
-    protected int positionX;
-    protected int positionY;
+    protected double positionX;
+    protected double positionY;
     protected Image icon;
+    protected ImageView imageView;
     
     protected double orgSceneX, orgSceneY;
     protected double orgTranslateX, orgTranslateY;
@@ -42,16 +43,19 @@ public class Item {
              
             ((ImageView)(e.getSource())).setTranslateX(newTranslateX);
             ((ImageView)(e.getSource())).setTranslateY(newTranslateY);
+            this.positionX = newTranslateX;
+            this.positionY = newTranslateY;
         });
         
         iv.setOnMouseClicked(e -> {
             if (selectedImage != null) {
                 selectedImage.setStyle("");
             }
-            selectedItem = this;
             selectedImage = iv;
+            selectedItem = this;
             selectedImage.setStyle("-fx-effect: innershadow(gaussian, red, 3, 1.0, 0, 0);");
         });
+        imageView = iv;
         return iv;
     }
 
