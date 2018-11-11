@@ -11,6 +11,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.Dragboard;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -79,6 +84,19 @@ public class GUI {
             }
         });
         bottom.getChildren().add(zoomOut);
+        
+        Button rotate = new Button();
+        rotate.setText("Rotate");
+        rotate.setOnAction(e -> {
+        	if (Item.selectedImage != null) {
+        		Item.selectedImage.setRotate(Item.selectedImage.getRotate() + 90);
+        		if (Item.selectedImage.getRotate() == 360) {
+        			Item.selectedImage.setRotate(0);
+        		}
+        	}
+        });
+        bottom.getChildren().add(rotate);
+        
         return bottom;
     }
 
@@ -93,7 +111,12 @@ public class GUI {
 
     private static GridPane setupCenter() {
         center = new GridPane();
+        center.setPrefSize(2400, 3200);
         center.setId("gridpane-center");
+        Image image = new Image("application/images/background.png",2400,3200,true,true);
+        BackgroundImage myBI = new BackgroundImage(image,BackgroundRepeat.NO_REPEAT,
+        		BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
+        center.setBackground(new Background(myBI));
         return center;
     }
 

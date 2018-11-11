@@ -51,7 +51,7 @@ public class Item {
                 selectedImage.setStyle("");
             }
             selectedImage = iv;
-            selectedImage.setStyle("-fx-effect: innershadow(gaussian, #039ed3, 3, 1.0, 0, 0);");
+            selectedImage.setStyle("-fx-effect: innershadow(gaussian, red, 3, 1.0, 0, 0);");
         });
         return iv;
     }
