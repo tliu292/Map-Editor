@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     public final static int SCENE_WIDTH = 800;
-    public final static int SCENE_HEIGHT = 600;
+    public final static int SCENE_HEIGHT = 700;
     public static void main(String[] args) {
         launch(args);
     }
@@ -20,6 +20,10 @@ public class Main extends Application {
         Scene mainScene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
         mainScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         primaryStage.setTitle("Map Editor");
+        primaryStage.setMaxHeight(SCENE_HEIGHT);
+        primaryStage.setMaxWidth(SCENE_WIDTH);
+        primaryStage.setMinHeight(SCENE_HEIGHT);
+        primaryStage.setMinWidth(SCENE_WIDTH);
         primaryStage.setScene(mainScene);
         primaryStage.show();
         
