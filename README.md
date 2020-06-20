@@ -2,8 +2,8 @@
 Madhacks Project
 
 ## Authors 
-Tz-Ruei Liu  
-Junqi Kou  
+Tz-Ruei Liu (tliu292@wisc.edu)  
+Junqi Kou (jkou3@wisc.edu)  
 Aaron Hernandez  
 Alex Do  
 
