@@ -18,3 +18,6 @@ We were all very familiar with Java, so we ended up using JavaFX to create a GUI
 
 ## Challenges
 We ran into so MANY challenges. It was definitely very difficult, but here are some of our struggles: AI Pathfinding, Screen Resizing, Adding/Scaling Images, Determining (x, y) positions.
+
+<img src="https://github.com/tliu292/Map-Editor/blob/master/images/Overview.png" width="70%" height="70%">
+
